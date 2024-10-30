@@ -1,15 +1,10 @@
-import argparse
+#!/usr/bin/env python3
+from compare_files.main_code_to_skripts import main_code
+from compare_files.main_code_to_skripts import read_json
 
 def main():
-    parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')
-
-    parser.add_argument('first_file')
-    parser.add_argument('second_file')
-
-    parser.add_argument('-f', '--format', help='set format of output')
-    args = parser.parse_args()
-
-
+    main_code.scripts_for_diff()
+    read_json.read_json()
 
 
 if __name__ == '__main__':
