@@ -5,14 +5,14 @@ description = ""
 authors = ["Andrey <andrei_chesanov@mail.ru>"]
 readme = "README.md"
 packages = [
-  { include = "compare_files"}
+  { include = "gendiff"}
 ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 
 [tool.poetry.scripts]
-gendiff = "compare_files.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
 
 
 [build-system]
