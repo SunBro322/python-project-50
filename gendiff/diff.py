@@ -7,7 +7,7 @@ def check_diff(data1, data2):
     for k, v in sorted_data1.items():
         if k in sorted_data2:
             if v == sorted_data2[k]:
-                result['  ' + k] = v
+                result[k] = v
             else:
                 result['- ' + k] = sorted_data1[k]
                 result['+ ' + k] = sorted_data2[k]
