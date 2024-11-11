@@ -1,3 +1,4 @@
+
 def check_diff(data1, data2):
     """ Сравнение двух словарей и получение нового с результатом """
     result = {}
@@ -17,5 +18,5 @@ def check_diff(data1, data2):
     for k, v in sorted_data2.items():
         if k not in result:
             result['+ ' + k] = sorted_data2[k]
-    
+
     return result

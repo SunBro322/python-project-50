@@ -1,9 +1,10 @@
-from gendiff.parse_files import read_json
+from gendiff.parse_files import get_info_from_file
 from gendiff.diff import check_diff
 from gendiff.view.json_view import view_json
 
 
 def generate_diff(file_path1, file_path2):
-    """ Данные полученые из main читаем через read_json и обрабатываем"""
-    data_from_file1, data_from_file2 = read_json(file_path1, file_path2)
-    return view_json(check_diff(data_from_file1, data_from_file2))
+    """ Данные полученые из main читаем через parse_files и обрабатываем"""
+    values1 = get_info_from_file(file_path1)
+    values2 = get_info_from_file(file_path2)
+    return view_json(check_diff(values1, values2))
