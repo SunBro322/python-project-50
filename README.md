@@ -1,2 +1,4 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/SunBro322/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/SunBro322/python-project-50/actions)
+Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. Это задача, для решения которой существуют в т.ч. онлайн-сервисы. Подобный механизм используется при выводе тестов или при автоматическом отслеживании изменении в конфигурационных файлах.
+
+Сравнение плоских файлов (JSON)
+<a href="https://asciinema.org/a/i4a4uB07g09mrpWyIoGsmWk3K" target="_blank"><img src="https://asciinema.org/a/i4a4uB07g09mrpWyIoGsmWk3K.svg" /></a>
