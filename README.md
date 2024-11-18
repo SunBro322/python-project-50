@@ -9,7 +9,7 @@
 [![Python CI](https://github.com/SunBro322/python-project-50/actions/workflows/pyci.yml/badge.svg)](https://github.com/SunBro322/python-project-50/actions/workflows/pyci.yml)
 
 Сравнение плоских файлов (JSON)
-<a href="https://asciinema.org/a/i4a4uB07g09mrpWyIoGsmWk3K" target="_blank"><img src="https://asciinema.org/a/i4a4uB07g09mrpWyIoGsmWk3K.svg" /></a>
+<a href="https://asciinema.org/a/m4Jwar6x7Or8HjapjABobdLTR" target="_blank"><img src="https://asciinema.org/a/m4Jwar6x7Or8HjapjABobdLTR.svg" /></a>
 
 Сравнение плоских файлов (YAML)
-<a href="https://asciinema.org/a/ccIzXIyDaqJx7kj4qC9A9AmI3" target="_blank"><img src="https://asciinema.org/a/ccIzXIyDaqJx7kj4qC9A9AmI3.svg" /></a>
+<a href="https://asciinema.org/a/Ki7JI8ILjDSeXBrMFGDaMFo36" target="_blank"><img src="https://asciinema.org/a/Ki7JI8ILjDSeXBrMFGDaMFo36.svg" /></a>
