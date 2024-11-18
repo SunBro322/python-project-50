@@ -11,6 +11,4 @@ def get_input_value():
 
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args()
-    print(args.first_file, args.second_file)
-
-    return args.first_file, args.second_file
+    return args.first_file, args.second_file, args.format

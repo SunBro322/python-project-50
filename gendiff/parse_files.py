@@ -9,7 +9,7 @@ def get_info_from_file(path_file):
 
 
 def open_file(path_file, file_ext):
-    """ Чтение Json """
+    """ Чтение Json и Yaml """
     if file_ext.lower() == '.json':
         with open(Path(Path() / 'tests' / 'fixtures' / path_file)) as f:
             return json.load(f)
