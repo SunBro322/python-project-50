@@ -11,11 +11,11 @@ def get_info_from_file(path_file):
 def open_file(path_file, file_ext):
     """ Чтение Json """
     if file_ext.lower() == '.json':
-        with open(Path(Path() / 'test' / 'fixtures' / path_file)) as f:
+        with open(Path(Path() / 'tests' / 'fixtures' / path_file)) as f:
             return json.load(f)
 
     elif file_ext.lower() == '.yaml':
-        with open(Path(Path() / 'test' / 'fixtures' / path_file)) as f:
+        with open(Path(Path() / 'tests' / 'fixtures' / path_file)) as f:
             return yaml.safe_load(f)
 
 

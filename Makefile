@@ -4,7 +4,7 @@ Gendiff-json:
 Gendiff-yaml:
 	poetry run gendiff file1.yaml file2.yaml
 
-Test:
+test:
 	poetry run pytest
 
 install:
