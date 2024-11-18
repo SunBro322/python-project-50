@@ -17,5 +17,3 @@ def open_file(path_file, file_ext):
     elif file_ext.lower() == '.yaml':
         with open(Path(Path() / 'tests' / 'fixtures' / path_file)) as f:
             return yaml.safe_load(f)
-
-
