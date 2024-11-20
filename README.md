@@ -16,3 +16,6 @@
 
 Рекурсивное сравнение
 <a href="https://asciinema.org/a/vPs1YRN3rJDpY2oQvuz06dpem" target="_blank"><img src="https://asciinema.org/a/vPs1YRN3rJDpY2oQvuz06dpem.svg" /></a>
+
+Плоский формат
+<a href="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M" target="_blank"><img src="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M.svg" /></a>
