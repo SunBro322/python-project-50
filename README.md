@@ -19,3 +19,6 @@
 
 Плоский формат
 <a href="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M" target="_blank"><img src="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M.svg" /></a>
+
+Вывод в Json
+<a href="https://asciinema.org/a/UT7MUew5sM6GjBPaQe0yB6CI6" target="_blank"><img src="https://asciinema.org/a/UT7MUew5sM6GjBPaQe0yB6CI6.svg" /></a>

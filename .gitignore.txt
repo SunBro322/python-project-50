@@ -2,3 +2,12 @@
 setup.cfg'Zone:Identifier
 dist/
 __pycache__
+
+/shelf/
+/workspace.xml
+/ispectionProfiles/
+dist/
+/.idea/
+/__pycache__/
+__pycache__/
+*.cast

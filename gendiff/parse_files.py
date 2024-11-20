@@ -14,6 +14,6 @@ def open_file(path_file, file_ext):
         with open(Path(Path() / 'tests' / 'fixtures' / path_file)) as f:
             return json.load(f)
 
-    elif file_ext.lower() == '.yaml':
+    elif file_ext.lower() == '.yaml' or file_ext.lower() == '.yml':
         with open(Path(Path() / 'tests' / 'fixtures' / path_file)) as f:
             return yaml.safe_load(f)
