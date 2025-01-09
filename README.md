@@ -23,7 +23,7 @@
 	</dt>
 	<dt>
 		3.Установите пакет:
-		<Alt-H1>make package-install</Alt-H1>
+		<h6>make package-install</h6>
 	</dt>
 </dl>
 
