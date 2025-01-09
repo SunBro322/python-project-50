@@ -1,13 +1,13 @@
-Gendiff-json:
+gendiff-json:
 	poetry run gendiff file1.json file2.json
 
-Gendiff-yaml:
+gendiff-yaml:
 	poetry run gendiff file1.yaml file2.yaml
 
-Gendiff-stylish:
+gendiff-stylish:
 	poetry run gendiff -f stylish file1.json file2.json
 
-Gendiff-plain:
+gendiff-plain:
 	poetry run gendiff -f plain file1.json file2.json
 
 test:
