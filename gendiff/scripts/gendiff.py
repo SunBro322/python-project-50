@@ -2,7 +2,7 @@
 
 
 # Вызов файл с argparese для получения данных от пользователя
-from gendiff.argparse import get_input_value
+from gendiff.cli import get_input_value
 from gendiff.generate_diff import generate_diff
 
 
