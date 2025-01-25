@@ -1,5 +1,5 @@
 import json
 
 
-def create_json(d_list):
+def make_json_result(d_list):
     return json.dumps(d_list, indent=2)

@@ -1,33 +1,30 @@
-gendiff-json:
-	poetry run gendiff file1.json file2.json
-
-gendiff-yaml:
-	poetry run gendiff file1.yaml file2.yaml
-
-gendiff-stylish:
-	poetry run gendiff -f stylish file1.json file2.json
-
-gendiff-plain:
-	poetry run gendiff -f plain file1.json file2.json
-
-test:
-	poetry run pytest
-
 install:
 	poetry install
+
+gendiff:
+	poetry run gendiff
 
 build:
 	poetry build
 
-package-install:
-	python3 -m pip install --user dist/*.whl
+publish:
+	poetry publish --dry-run
 
-lint:
+package-install:
+	python3 -m pip install --force-reinstall --user dist/*.whl
+
+make lint:
 	poetry run flake8 gendiff
 
+test:
+	poetry run pytest
 
-test-coverage:
+ test-coverage:
 	poetry run coverage run -m pytest
 	poetry run coverage xml
+
+check: selfcheck test lint
+
+.PHONY: gendiff
 
 
