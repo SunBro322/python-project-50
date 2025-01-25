@@ -1,49 +1,45 @@
-def create_plain(d_list):
-    d_list.sort(key=lambda x: x['name'])
-    res = get_diff_plain(d_list)
-    return '\n'.join(res)
+def to_str(value):
+    if isinstance(value, dict):
+        return '[complex value]'
+    elif isinstance(value, str):
+        return f"'{value}'"
+    elif value is None:
+        return 'null'
+    elif isinstance(value, bool):
+        return str(value).lower()
+    return str(value)
 
 
-def get_diff_plain(d_list, path=''):
-    res = []
-    for node in d_list:
-        path_to_ch = path + node['name']
-        match node['status']:
-            case 'nested':
-                path_to_ch += '.'
-                diff = get_diff_plain(node['children'], path_to_ch)
-                res.extend(diff)
-            case 'added':
-                ch = сonvert_to_string(node['data'])
-                diff = (f"Property '{path_to_ch}' was added "
-                        f"with value: {ch}")
-                res.append(diff)
-            case 'deleted':
-                ch = сonvert_to_string(node['data'])
-                diff = "Property '{}' was removed".format(path_to_ch)
-                res.append(diff)
-            case 'changed':
-                ch_bef = сonvert_to_string(node['data before'])
-                ch_aft = сonvert_to_string(node['data after'])
-                diff = (f"Property '{path_to_ch}' was updated. "
-                        f"From {ch_bef} to {ch_aft}")
-                res.append(diff)
-            case 'not changed':
-                continue
-            case _:
-                raise ValueError('Invalid type!')
-    return res
+def make_plain_result(diff):
+    def _iter(diff, path=''):
+        res = []
+        for key, data in diff.items():
+            current_path = f'{path}.{key}' if path else key
+            match data['type']:
+                case 'added':
+                    value = to_str(data['value'])
+                    res.append(
+                        f"Property '{current_path}' "
+                        f"was added with value: {value}"
+                    )
+                case 'removed':
+                    res.append(f"Property '{current_path}' was removed")
+                case 'changed':
+                    old_value = to_str(data['old_value'])
+                    new_value = to_str(data['new_value'])
+                    res.append(
+                        f"Property '{current_path}' was updated. "
+                        f"From {old_value} to {new_value}"
+                    )
+                case 'nested':
+                    res.extend(_iter(data['children'], current_path))
+                case 'unchanged':
+                    continue
+                case _:
+                    raise ValueError(
+                        f"Unsupported node type at path "
+                        f"'{current_path}': {data['type']}"
+                    )
+        return res
 
-
-def сonvert_to_string(data):
-    if type(data) is dict or type(data) is list:
-        res = '[complex value]'
-    elif data is False or data is True:
-        res = str(data).lower()
-    elif data is None:
-        res = 'null'
-    elif type(data) is str:
-        res = "'{}'".format(data)
-    else:
-        res = '{}'.format(data)
-    return res
+    return '\n'.join(_iter(diff))

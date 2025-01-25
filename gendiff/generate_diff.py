@@ -1,11 +1,23 @@
-from gendiff.parse_files import get_info_from_file
-from gendiff.diff import check_diff
-from gendiff.formatters.format_diff import format_diff
+from gendiff.diff_builder import build_diff
+from gendiff.formats import format_diff
+from gendiff.parser import parse_data
+import os
 
 
-def generate_diff(file_path1, file_path2, format_name):
-    """ Данные полученые из main читаем через parse_files и обрабатываем"""
-    values1 = get_info_from_file(file_path1)
-    values2 = get_info_from_file(file_path2)
-    get_diff = check_diff(values1, values2)
-    return format_diff(get_diff, format_name)
+def get_file_format(file_path):
+    _, extension = os.path.splitext(file_path)
+    return extension[1:]
+
+
+def read_and_parse_file(file_path):
+    format_file = get_file_format(file_path)
+    with open(file_path) as f:
+        content = f.read()
+        return parse_data(content, format_file)
+
+
+def generate_diff(file_path1, file_path2, formatter='stylish'):
+    data1 = read_and_parse_file(file_path1)
+    data2 = read_and_parse_file(file_path2)
+    diff = build_diff(data1, data2)
+    return format_diff(diff, formatter)

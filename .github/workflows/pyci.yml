@@ -1,37 +1,46 @@
-name: Python CI
+name: auto-tests
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # we want to test our package on several versions of Python
-        python-version: ["3.10"]
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-        # make depends on poetry
-      - name: Install dependencies
-        run: |
-          pip install poetry
-          make install
-      - name: Run linter and pytest
-        run: |
-          make test
-          make lint
+          python-version: "3.12"
 
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
-        if: github.ref_name == 'main'
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run tests
+        run: poetry run pytest --cov=gendiff --cov-report=xml --cov-report=term tests/
+
+      - name: Download Code Climate Reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+
+      - name: Prepare coverage report
+        run: ./cc-test-reporter format-coverage --input-type coverage.py --output coverage/codeclimate.json
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+
+      - name: Upload coverage to Code Climate
+        run: ./cc-test-reporter upload-coverage
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

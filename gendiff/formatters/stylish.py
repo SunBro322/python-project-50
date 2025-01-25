@@ -1,46 +1,60 @@
-def create_stylish(d_list, lvl=0):
-    res = []
-    res.append('{\n')
-    ind = ' ' * 2
-    ind = ind + ind * 2 * lvl
-    d_list.sort(key=lambda x: x['name'])
-    for node in d_list:
-        op = ' '
-        match node['status']:
-            case 'nested':
-                data = create_stylish(node['children'], lvl + 1)
-            case 'added':
-                data = сonvert_to_string(node['data'], ind)
-                op = '+'
-            case 'deleted':
-                data = сonvert_to_string(node['data'], ind)
-                op = '-'
-            case 'changed':
-                data = сonvert_to_string(node['data before'], ind)
-                res.append(f"{ind}- {node['name']}: {data}\n")
-                data = сonvert_to_string(node['data after'], ind)
-                op = '+'
-            case 'not changed':
-                data = сonvert_to_string(node['data'], ind)
-            case _:
-                raise ValueError('Invalid type!')
-        res.append(f"{ind}{op} {node['name']}: {data}\n")
-    res.append(ind[:-2] + '}')
-    return ''.join(res)
-
-
-def сonvert_to_string(data, ind):
-    if type(data) is dict:
-        ind = ind + '    '
-        res = '{\n'
-        for key in data.keys():
-            value = сonvert_to_string(data[key], ind)
-            res = res + ind + '  ' + key + ': ' + value + '\n'
-        res = res + ind[:-2] + '}'
-    elif data is False or data is True:
-        res = str(data).lower()
-    elif data is None:
-        res = 'null'
+def to_str(value, spaces_count=2):
+    if value is None:
+        return 'null'
+    elif isinstance(value, bool):
+        return str(value).lower()
+    elif isinstance(value, dict):
+        indent = ' ' * (spaces_count + 4)
+        lines = []
+        for key, inner_value in value.items():
+            formatted_value = to_str(inner_value, spaces_count + 4)
+            lines.append(f'{indent}  {key}: {formatted_value}')
+        formatted_string = '\n'.join(lines)
+        end_indent = ' ' * (spaces_count + 2)
+        return f'{{\n{formatted_string}\n{end_indent}}}'
     else:
-        res = str(data)
-    return res
+        return str(value)
+
+
+def make_stylish_result(diff):
+    def _iter(diff, spaces_count=2):
+        lines = []
+
+        for key, item in diff.items():
+            indent = ' ' * spaces_count
+
+            match item['type']:
+                case 'unchanged':
+                    current_value = to_str(item['value'], spaces_count)
+                    lines.append(f"{indent}  {key}: {current_value}")
+
+                case 'changed':
+                    old_value = to_str(item.get('old_value'), spaces_count)
+                    new_value = to_str(item.get('new_value'), spaces_count)
+                    lines.extend([
+                        f'{indent}- {key}: {old_value}',
+                        f'{indent}+ {key}: {new_value}'
+                    ])
+
+                case 'added':
+                    current_value = to_str(item['value'], spaces_count)
+                    lines.append(f'{indent}+ {key}: {current_value}')
+
+                case 'removed':
+                    current_value = to_str(item['value'], spaces_count)
+                    lines.append(f'{indent}- {key}: {current_value}')
+
+                case 'nested':
+                    nested_diff = _iter(item['children'], spaces_count + 4)
+                    lines.append(f"{indent}  {key}: {nested_diff}")
+
+                case _:
+                    raise ValueError(
+                        f"Unsupported node type at key: {key}, item: {item}"
+                    )
+
+        formatted_string = '\n'.join(lines)
+        end_indent = ' ' * (spaces_count - 2)
+        return f'{{\n{formatted_string}\n{end_indent}}}'
+
+    return _iter(diff)
