@@ -13,6 +13,6 @@ lint:
 pytest:
 	poetry run pytest
 test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml
+	poetry run coverage run -m pytest
 gendiff:
 	poetry run gendiff --cov-report xml tests
