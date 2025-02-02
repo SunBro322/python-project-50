@@ -1,19 +1,21 @@
 install:
-	poetry install
-build:
-	poetry build
-publish:
-	poetry publish --dry-run
-package-install:
-	python3 -m pip install --force-reinstall --user dist/*.whl
-package-reinstall:
-	python3 -m pip install  --force-reinstall dist/*.whl
-lint:
-	poetry run flake8 gendiff
-pytest:
-	poetry run pytest
+	uv sync
+
+run:
+	uv run hexlet-python-package
+
+test:
+	uv run pytest
+
 test-coverage:
-	poetry run coverage run -m pytest
-	poetry run coverage xml
-gendiff:
-	poetry run gendiff
+	uv run pytest --cov=hexlet_python_package --cov-report xml
+
+lint:
+	uv run ruff check
+
+check: test lint
+
+build:
+	uv build
+
+.PHONY: install test lint selfcheck check build
