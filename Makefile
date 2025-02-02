@@ -16,3 +16,6 @@ test-coverage:
 	poetry run coverage run -m pytest
 gendiff:
 	poetry run gendiff --cov-report xml tests
+
+report:
+	./gradlew jacocoTestReport
