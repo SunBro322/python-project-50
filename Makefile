@@ -13,4 +13,4 @@ lint:
 pytest:
 	poetry run pytest
 coverage:
-	poetry run pytest --cov=your_package --cov-report=xml:coverage.xml tests/
+	poetry run pytest --cov=gendiff --cov-report=xml:coverage.xml tests/
