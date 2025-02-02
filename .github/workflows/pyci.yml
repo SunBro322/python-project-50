@@ -1,7 +1,7 @@
 name: Python CI
 
 on:
-    push:
+  push:
 
 jobs:
   build:
@@ -11,24 +11,28 @@ jobs:
         python-version: [3.12]
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry
+        run: pipx install poetry
+
       - name: Install dependencies
-        run: |
-          pip install poetry
-          make install
-      - name: Run linter and pytest
-        run: |
-          make lint
-          make pytest
+        run: poetry install
+
+      - name: Run linter
+        run: make lint
+
+      - name: Run tests with coverage
+        run: make coverage
 
       - name: Upload to CodeClimate
         uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageLocations: |
-            coverage.xml:coverage.py
+          coverageLocations: coverage.xml
           debug: true
