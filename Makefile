@@ -1,23 +1,19 @@
-install: # poetry install
-	poetry install
+build:
+	uv run build
 
-build: # project building
-	poetry build
+package-install:
+	uv tool install dist/*.whl
 
-publish: # project publication
-	poetry publish --dry-run
+install:
+	uv sync
 
-package-install: # project install
-	python3 -m pip install --user dist/*whl
+gendiff:
+	uv run gendiff
 
-package-reinstall: #reinstall project
-	python3 -m pip install --user --force-reinstall dist/*whl
+lint:
+	uv run ruff check gendiff
 
-linter:
-	poetry run flake8 gendiff
+test-coverage:
+	uv run pytest --cov --cov-report xml:coverage.xml
 
-tests:
-	poetry run pytest -vv
-
-make test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml tests
+.PHONY: install test lint selfcheck check build
