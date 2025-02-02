@@ -23,7 +23,6 @@ def read_file(file_path):
     ("file1.json", "file2.json", "expected_plain_output.txt", "plain"),
     ("file1.yml", "file2.yml", "expected_plain_output.txt", "plain")
 ])
-
 def test_generate_diff(file1, file2, expected_file, formatter):
     file1_path = get_fixtures_path(file1)
     file2_path = get_fixtures_path(file2)
