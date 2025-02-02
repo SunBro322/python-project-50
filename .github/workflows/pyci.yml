@@ -23,8 +23,12 @@ jobs:
         run: |
           make lint
           make pytest
-
-      - name: Upload to CodeClimate
+          
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v9.0.0
+        if: github.ref_name == 'main'
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: make codeclimate
+        with:
+          coverageCommand: make coverage
+          debug: true
