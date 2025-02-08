@@ -8,70 +8,70 @@
 [![Python CI](https://github.com/SunBro322/python-project-50/actions/workflows/pyci.yml/badge.svg)](https://github.com/SunBro322/python-project-50/actions/workflows/pyci.yml)
 
 
-<h2>Проект Вычислитель отличий</h2>
+<h2>Project Difference Calculator</h2>
 <hr>
 
-<h3>Установка</h3>
+<h3>Installation</h3>
 
 <dl>
-	<dt>1.Клонируйте репозиторий по ссылке:
+	<dt>1.Clone the repository from the link:
 	<h6>https://github.com/SunBro322/python-project-50</h6>
 	</dt>
 	<dt>
-		2.Перейдите в директорию проекта:
+		2.Go to the project directory:
 		<h6>cd python-project-50</h6>
 	</dt>
 	<dt>
-		3.Установите пакет:
+		3.Install the package:
 		<h6>make package-install</h6>
 	</dt>
 </dl>
 
 
 
-<h2>Описание</h2>
-Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. Это задача, для решения которой существуют в т.ч. онлайн-сервисы. Подобный механизм используется при выводе тестов или при автоматическом отслеживании изменении в конфигурационных файлах.
+<h2>Description</h2>
+A difference calculator is a program that determines the difference between two data structures. This is a task for which online services exist, among other things. A similar mechanism is used when outputting tests or when automatically tracking changes in configuration files.
 
-<h2>Технологий</h2>
+<h2>Tools</h2>
 <ul>
-    <li>Poetry - Инструмент для управления зависимостями и создания виртуальных окружений в проектах на Python.</li>
-    <li>Py.Test - Фреймворк для тестирования, который позволяет легко писать и запускать тесты.</li>
-    <li>Flake8 - Инструмент для проверки стиля кода согласно стандартам PEP 8.</li>
+    <li>Poetry 1.8.3 - Инструмент для управления зависимостями и создания виртуальных окружений в проектах на Python.</li>
+    <li>Py.Test 8.3.4 - Фреймворк для тестирования, который позволяет легко писать и запускать тесты.</li>
+    <li>Flake8 7.1.1 - Инструмент для проверки стиля кода согласно стандартам PEP 8.</li>
 </ul>
 
 
 
 <hr>
-<h2>Сравнение плоских файлов (JSON)</h2>
+<h2>Flat File Comparison (JSON)</h2>
 
-Сравнение строится на основе того, как изменилось содержимое во втором файле относительно первого, позволяющее быстро определить изменения в структуре данных JSON-файлов.
+The comparison is based on how the content in the second file has changed relative to the first, allowing you to quickly identify changes in the data structure of JSON files..
 
 <a href="https://asciinema.org/a/m4Jwar6x7Or8HjapjABobdLTR" target="_blank"><img src="https://asciinema.org/a/m4Jwar6x7Or8HjapjABobdLTR.svg" /></a>
 
 <hr>
-<h2>Сравнение плоских файлов (YAML)</h2>
+<h2>Flat File Comparison (YAML)</h2>
 
-Поиск различий между двумя простыми, одноуровневыми YAML-файлами без вложенных структур. Легкочитаемый синтаксис помогает быстро ориентироваться в разнице между файлами.
+Find differences between two simple, single-level YAML files without nested structures. Easy-to-read syntax helps you quickly navigate the differences between files.
 
 <a href="https://asciinema.org/a/Ki7JI8ILjDSeXBrMFGDaMFo36" target="_blank"><img src="https://asciinema.org/a/Ki7JI8ILjDSeXBrMFGDaMFo36.svg" /></a>
 
 <hr>
-<h2>Рекурсивное сравнение</h2>
+<h2>Recursive comparison</h2>
 
-Данным примером diff описывает то, что произошло с каждым ключом в diff. Например, был ли он добавлен, изменен или удален.
+In this example, diff describes what happened to each key in the diff. For example, whether it was added, changed, or removed.
 
 <a href="https://asciinema.org/a/vPs1YRN3rJDpY2oQvuz06dpem" target="_blank"><img src="https://asciinema.org/a/vPs1YRN3rJDpY2oQvuz06dpem.svg" /></a>
 
 <hr>
-<h2>Плоский формат</h2>
+<h2>Flat format</h2>
 
-Plain формат представляет данные в линейном виде. Это идеальный вариант для визуального ознакомления относительно различий между файлами, а также для простых текстовых отчетов, если нет необходимости в дополнительном парсинге.
+Plain format presents data in a linear form. It is ideal for visual familiarization with the differences between files, as well as for simple text reports if additional parsing is not required.
 
 <a href="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M" target="_blank"><img src="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M.svg" /></a>
 
 <hr>
 <h2>Вывод в Json</h2>
 
-Данный вывод удобен для широкого применения, так как JSON формат поддерживается всеми современными языками программирования. Его легко парсить и обрабатывать данные с помощью множества доступных библиотек и инструментов. JSON поддерживает сложные структуры данных, такие как вложенные объекты и массивы, что позволяет точно и полно представлять данные.
+This output is convenient for widespread use, as the JSON format is supported by all modern programming languages. It is easy to parse and process data using many available libraries and tools. JSON supports complex data structures, such as nested objects and arrays, which allows for accurate and complete representation of data.
 
 <a href="https://asciinema.org/a/UT7MUew5sM6GjBPaQe0yB6CI6" target="_blank"><img src="https://asciinema.org/a/UT7MUew5sM6GjBPaQe0yB6CI6.svg" /></a>

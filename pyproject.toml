@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Утилита, показывающая различия между двумя файлами"
+description = "Utility that shows the differences between two files"
 authors = ["Andrey <andrei_chesanov@mail.ru>"]
 readme = "README.md"
 packages = [
