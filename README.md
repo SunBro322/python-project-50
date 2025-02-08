@@ -70,7 +70,7 @@ Plain format presents data in a linear form. It is ideal for visual familiarizat
 <a href="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M" target="_blank"><img src="https://asciinema.org/a/lCN0nRyYrHoOuvHwM9GcraZ6M.svg" /></a>
 
 <hr>
-<h2>Вывод в Json</h2>
+<h2>Output in Json</h2>
 
 This output is convenient for widespread use, as the JSON format is supported by all modern programming languages. It is easy to parse and process data using many available libraries and tools. JSON supports complex data structures, such as nested objects and arrays, which allows for accurate and complete representation of data.
 
