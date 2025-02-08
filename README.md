@@ -34,9 +34,9 @@ A difference calculator is a program that determines the difference between two 
 
 <h2>Tools</h2>
 <ul>
-    <li>Poetry 1.8.3 - Инструмент для управления зависимостями и создания виртуальных окружений в проектах на Python.</li>
-    <li>Py.Test 8.3.4 - Фреймворк для тестирования, который позволяет легко писать и запускать тесты.</li>
-    <li>Flake8 7.1.1 - Инструмент для проверки стиля кода согласно стандартам PEP 8.</li>
+    <li>Poetry 1.8.3 - A tool for managing dependencies and creating virtual environments in Python projects.</li>
+    <li>Py.Test 8.3.4 - A testing framework that makes it easy to write and run tests.</li>
+    <li>Flake8 7.1.1 - Tool to check code style according to PEP 8 standards.</li>
 </ul>
 
 
