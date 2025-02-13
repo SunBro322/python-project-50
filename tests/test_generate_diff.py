@@ -1,14 +1,13 @@
-import os
 import pytest
+from pathlib import Path
 from gendiff import generate_diff
 
 
-def get_fixtures_path(file_name):
-    current_dir = os.path.dirname(__file__)
-    return os.path.join(current_dir, 'fixtures', file_name)
+FIXTURES_DIR = Path(__file__).parent / 'fixtures'
 
 
-def read_file(file_path):
+def get_result_data(file_name):
+    file_path = FIXTURES_DIR / file_name
     with open(file_path, 'r') as file:
         return file.read().strip()
 
@@ -31,10 +30,10 @@ def read_file(file_path):
     ]
 )
 def test_flat_files(file1, file2, expected_file, formatter):
-    file1_path = get_fixtures_path(file1)
-    file2_path = get_fixtures_path(file2)
-    expected_result = read_file(get_fixtures_path(expected_file))
-    result = generate_diff(file1_path, file2_path, formatter)
+    file1_path = FIXTURES_DIR / file1
+    file2_path = FIXTURES_DIR / file2
+    expected_result = get_result_data(expected_file)
+    result = generate_diff(str(file1_path), str(file2_path), formatter)
     assert result == expected_result, (
         f"Failed on {formatter} with {file1} and {file2}"
     )
@@ -52,10 +51,10 @@ def test_flat_files(file1, file2, expected_file, formatter):
     ]
 )
 def test_formatters(file1, file2, expected_file, formatter):
-    file1_path = get_fixtures_path(file1)
-    file2_path = get_fixtures_path(file2)
-    expected_result = read_file(get_fixtures_path(expected_file))
-    result = generate_diff(file1_path, file2_path, formatter)
+    file1_path = FIXTURES_DIR / file1
+    file2_path = FIXTURES_DIR / file2
+    expected_result = get_result_data(expected_file)
+    result = generate_diff(str(file1_path), str(file2_path), formatter)
     assert result == expected_result, (
         f"Failed on {formatter} with {file1} and {file2}"
     )

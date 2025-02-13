@@ -152,6 +152,27 @@ files = [
 ]
 
 [[package]]
+name = "patch"
+version = "1.16"
+description = "Library to parse and apply unified diffs"
+optional = false
+python-versions = "*"
+files = [
+    {file = "patch-1.16.zip", hash = "sha256:c62073f356cff054c8ac24496f1a3d7cfa137835c31e9af39a9f5292fd75bd9f"},
+]
+
+[[package]]
+name = "pathlib"
+version = "1.0.1"
+description = "Object-oriented filesystem paths"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pathlib-1.0.1-py3-none-any.whl", hash = "sha256:f35f95ab8b0f59e6d354090350b44a80a80635d22efdedfa84c7ad1cf0a74147"},
+    {file = "pathlib-1.0.1.tar.gz", hash = "sha256:6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f"},
+]
+
+[[package]]
 name = "pluggy"
 version = "1.5.0"
 description = "plugin and hook calling mechanisms for python"
@@ -345,4 +366,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dfd3528de13d109e9c632ad85dc9a834079914dee99886a47608e4224b92e128"
+content-hash = "acf66a5198f772e5b54404a3571cd14d1245cf773f0a895979acf8a98fc82bfd"
